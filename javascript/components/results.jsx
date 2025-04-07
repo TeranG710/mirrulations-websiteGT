@@ -1,4 +1,6 @@
+// javascript/components/results.jsx
 import PageSwitcher from "./pageSwitcher";
+import ExportButton from "./ExportButton"; // Import the new component
 import React, { useEffect, useState, useRef } from "react";
 import "/styles/results.css";
 import "bootstrap/dist/css/bootstrap.min.css";
@@ -25,7 +27,12 @@ const ResultsSection = ({ results }) => {
 
   return (
     <div ref={resultsRef} className={`results-container mt-4 ${isVisible ? "fade-in" : ""}`}>
-      <h2 className="results-title">Search Results</h2>
+      {/* Add results header with title and export button */}
+      <div className="results-header">
+        <h2 className="results-title">Search Results</h2>
+        <ExportButton results={results} className="export-dropdown" />
+      </div>
+      
       {results.dockets.map((docket, index) => (
         <div key={index} className="result-item border p-3 mb-2 rounded position-relative">
           <strong>{docket.title}</strong>
